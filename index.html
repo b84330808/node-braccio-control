@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>##############</title>
+    <meta charset="UTF-8">
+    <style>
+        span {
+            margin-left: 12px;
+        }
+        
+        .slider {
+            margin: 20px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
+
+
+</head>
+
+<body>
+    <div id="slider1" class="slider"></div>
+    <span>Base:</span> <input id="val1" type="text" value="10" />
+    <input id="btn1" type="button" value="Update" />
+    <br>
+    <br>
+    <div id="slider2" class="slider"></div>
+    <span>Base:</span> <input id="val2" type="text" value="10" />
+    <input id="btn2" type="button" value="Update" />
+    <br>
+    <br>
+
+    <div id="slider3" class="slider"></div>
+    <span>Base:</span> <input id="val3" type="text" value="10" />
+    <input id="btn3" type="button" value="Update" />
+    <br>
+    <br>
+
+    <div id="slider4" class="slider"></div>
+    <span>Base:</span> <input id="val4" type="text" value="10" />
+    <input id="btn4" type="button" value="Update" />
+    <br>
+    <br>
+
+    <div id="slider5" class="slider"></div>
+    <span>Base:</span> <input id="val5" type="text" value="10" />
+    <input id="btn5" type="button" value="Update" />
+    <br>
+    <br>
+
+    <div id="slider6" class="slider"></div>
+    <span>Base:</span> <input id="val6" type="text" value="10" />
+    <input id="btn6" type="button" value="Update" />
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#slider1").slider({
+            min: 0,
+            max: 180,
+            step: 1,
+            slide: function(event, ui) {
+                $("#val1").val(ui.value);
+                send()
+            },
+            change: function() {
+                console.log(123)
+
+            }
+
+        });
+
+        $("#slider2").slider({
+            min: 0,
+            max: 180,
+            step: 1,
+            slide: function(event, ui) {
+                $("#val2").val(ui.value);
+                send()
+
+            },
+            change: function() {
+                console.log(123)
+            }
+
+        });
+
+        $("#slider3").slider({
+            min: 0,
+            max: 180,
+            step: 1,
+            slide: function(event, ui) {
+                $("#val3").val(ui.value);
+                send()
+
+            },
+            change: function() {
+                console.log(123)
+            }
+
+        });
+
+        $("#slider4").slider({
+            min: 0,
+            max: 180,
+            step: 1,
+            slide: function(event, ui) {
+                $("#val4").val(ui.value);
+                send()
+
+            },
+            change: function() {
+                console.log(123)
+            }
+
+        });
+
+
+        $("#slider5").slider({
+            min: 0,
+            max: 180,
+            step: 1,
+            slide: function(event, ui) {
+                $("#val5").val(ui.value);
+                send()
+
+            },
+            change: function() {
+                console.log(123)
+            }
+
+        });
+
+        $("#slider6").slider({
+            min: 0,
+            max: 180,
+            step: 1,
+            slide: function(event, ui) {
+                $("#val6").val(ui.value);
+            },
+            change: function() {
+                console.log(123)
+            }
+
+        });
+
+        $("#btn1").click(function() {
+            $("#slider1").slider("option", "value", $("#val1").val());
+            send()
+        });
+
+        $("#btn2").click(function() {
+            $("#slider2").slider("option", "value", $("#val2").val());
+            send()
+
+        });
+
+        $("#btn3").click(function() {
+            $("#slider3").slider("option", "value", $("#val3").val());
+            send()
+
+        });
+
+        $("#btn4").click(function() {
+            $("#slider4").slider("option", "value", $("#val4").val());
+            send()
+
+        });
+
+        $("#btn5").click(function() {
+            $("#slider5").slider("option", "value", $("#val5").val());
+            send()
+
+        });
+
+        $("#btn6").click(function() {
+            $("#slider6").slider("option", "value", $("#val6").val());
+            send()
+
+        });
+
+    });
+
+    function send() {
+        // $("#val1").val(),$("#val2").val(),$("#val3").val(),$("#val4").val(),$("#val5").val(),$("#val6").val()
+    }
+</script>
+
+<script>
+    document.write('<script src="http://' +
+        location.host.split(':')[0] +
+        ':35729/livereload.js"></' +
+        'script>')
+</script>
+
+</html>
