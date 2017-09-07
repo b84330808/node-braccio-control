@@ -8,7 +8,7 @@
         span {
             margin-left: 12px;
         }
-        
+
         .slider {
             margin: 20px;
         }
@@ -57,7 +57,22 @@
 <script src="./socket.io.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
 <script>
+        var socket = io.connect("http://localhost:3001/");
+        socket.on('connect', function(data) {
+            socket.emit('join', 'Hello World from client');
+        });
+        socket.on('news', function(data) {
+            console.log(data)
+        });
+</script>
+
+<script>
+
+
+
+
     $(document).ready(function() {
         $("#slider1").slider({
             min: 0,
@@ -68,7 +83,6 @@
                 send()
             },
             change: function() {
-                console.log(123)
 
             }
 
@@ -84,7 +98,6 @@
 
             },
             change: function() {
-                console.log(123)
             }
 
         });
@@ -99,7 +112,6 @@
 
             },
             change: function() {
-                console.log(123)
             }
 
         });
@@ -114,7 +126,6 @@
 
             },
             change: function() {
-                console.log(123)
             }
 
         });
@@ -130,7 +141,6 @@
 
             },
             change: function() {
-                console.log(123)
             }
 
         });
@@ -141,9 +151,10 @@
             step: 1,
             slide: function(event, ui) {
                 $("#val6").val(ui.value);
+                send()
+
             },
             change: function() {
-                console.log(123)
             }
 
         });
@@ -186,22 +197,18 @@
     });
 
     function send() {
-        // $("#val1").val(),$("#val2").val(),$("#val3").val(),$("#val4").val(),$("#val5").val(),$("#val6").val()
+        var s = [$("#val1").val(),$("#val2").val(),$("#val3").val(),$("#val4").val(),$("#val5").val(),$("#val6").val()]
+        socket.emit('send', s);
     }
 </script>
-
+<!--
 <script>
     document.write('<script src="http://' +
         location.host.split(':')[0] +
         ':35729/livereload.js"></' +
         'script>')
-</script>
+</script> -->
 
-<script>
-    // var socket = io.connect("http://localhost:8080/");
-    // socket.on('connect', function(data) {
-    //     socket.emit('join', 'Hello World from client');
-    // });
-</script>
+
 
 </html>

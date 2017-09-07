@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var io = require('socket.io')(3001);
 
 var SerialPort = require('serialport');
 
@@ -22,22 +22,24 @@ var SerialPort = require('serialport');
 //     console.log('Error: ', err.message);
 // })
 
+var port = parseInt(process.env.PORT, 10) || 3000;
 
 app.use(express.static(__dirname + '/'));
+app.set('port', port);
 
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/index.html')
+})
 
-// app.get('/', function(req, res) {
-//     res.sendFile(__dirname + '/index.html')
-// })
-
-app.listen(8080, function() {
-    console.log('Example app listening on port 8080!')
+app.listen(port, function() {
+    console.log('Example app listening on port 3000!')
 })
 
 io.on('connection', function(client) {
     console.log('Client connected...');
-    client.emit('news', { hello: 'world' });
-    client.on('join', function(data) {
+    // client.emit('news', { hello: 'world' });
+    client.on('send', function(data) {
+        //send to serialport
         console.log(data);
     })
 });
